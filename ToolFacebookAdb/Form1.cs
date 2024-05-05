@@ -49,48 +49,56 @@ namespace ToolFacebookAdb
                     {
                         while (true)
                         {
-                            int newThreadNumber;
-                            lock (locker)
+                            try
                             {
-                                newThreadNumber = countAcc;
-                                if (countAcc >= listConfigRun.Count) return;
-                                countAcc++;
-                            }
+                                int newThreadNumber;
+                                lock (locker)
+                                {
+                                    newThreadNumber = countAcc;
+                                    if (countAcc >= listConfigRun.Count) return;
+                                    countAcc++;
+                                }
 
-                            UtilityHelper.SetSharedFolder(listConfigRun[newThreadNumber].ldphone.index, listConfigRun[newThreadNumber].Folder, listLDCurrent);
-                            listConfigRun[newThreadNumber].ldphone.Start();
+                                UtilityHelper.SetSharedFolder(listConfigRun[newThreadNumber].ldphone.index, listConfigRun[newThreadNumber].Folder, listLDCurrent);
+                                listConfigRun[newThreadNumber].ldphone.Start();
 
-                            Thread.Sleep(30000); // wait LD
+                                Thread.Sleep(30000); // wait LD
 
-                            listConfigRun[newThreadNumber].ldphone.FakeIP(listConfigRun[newThreadNumber].proxy, locker);
+                                listConfigRun[newThreadNumber].ldphone.FakeIP(listConfigRun[newThreadNumber].proxy, locker);
 
 
-                            Thread.Sleep(5000);
+                                Thread.Sleep(5000);
 
-                            listConfigRun[newThreadNumber].ldphone.OpenApp();
-                            Thread.Sleep(5000);
-                            listConfigRun[newThreadNumber].ldphone.Login(listConfigRun[newThreadNumber].account);
-                            Thread.Sleep(1000);
-                            if (f_TaoPage)
-                            {
-                                listConfigRun[newThreadNumber].ldphone.Createpage(listConfigRun[newThreadNumber].Page, listConfigRun[newThreadNumber].account);
+                                listConfigRun[newThreadNumber].ldphone.OpenApp();
+                                Thread.Sleep(5000);
+                                listConfigRun[newThreadNumber].ldphone.Login(listConfigRun[newThreadNumber].account);
                                 Thread.Sleep(1000);
-                            }
-                            if (f_Reels)
-                            {
-                                listConfigRun[newThreadNumber].ldphone.Reels(30000);
-                            }
-                            if (f_UpReels)
-                            {
-                                listConfigRun[newThreadNumber].ldphone.UpReels(1);
-                                Thread.Sleep(2000);
-                            }
+                                if (f_TaoPage)
+                                {
+                                    listConfigRun[newThreadNumber].ldphone.Createpage(listConfigRun[newThreadNumber].Page, listConfigRun[newThreadNumber].account);
+                                    Thread.Sleep(1000);
+                                }
+                                if (f_Reels)
+                                {
+                                    listConfigRun[newThreadNumber].ldphone.Reels(30000);
+                                }
+                                if (f_UpReels)
+                                {
+                                    listConfigRun[newThreadNumber].ldphone.UpReels(1);
+                                    Thread.Sleep(2000);
+                                }
 
-                            listConfigRun[newThreadNumber].ldphone.Close();
+                                listConfigRun[newThreadNumber].ldphone.Close();
+                            }
+                            catch(Exception e)
+                            {
+
+                            }
+                            
                         }
                     });
                     newThread.Start();
-                    newThread.IsBackground = false;
+                    newThread.IsBackground = true;
 
 
 
