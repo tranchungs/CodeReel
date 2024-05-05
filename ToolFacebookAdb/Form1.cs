@@ -98,8 +98,8 @@ namespace ToolFacebookAdb
                         }
                     });
                     newThread.Start();
+                    newThread.IsBackground = false;
                     newThread.IsBackground = true;
-
 
 
                 }
@@ -134,6 +134,8 @@ namespace ToolFacebookAdb
                     if (!isHave)
                     {
                         LDPlayer.Copy($"{itemLv.Text}","82");
+                        Thread.Sleep(2000);
+                        UtilityHelper.SetSharedFolder(itemLv.Text, itemLv.SubItems[3].Text, listLDCurrent);
                     }
 
                 }
