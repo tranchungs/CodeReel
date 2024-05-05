@@ -91,11 +91,11 @@ namespace ToolFacebookAdb
 
                                 listConfigRun[newThreadNumber].ldphone.Close();
                             }
-                            catch(Exception e)
+                            catch (Exception e)
                             {
 
                             }
-                            
+
                         }
                     });
                     newThread.Start();
@@ -133,7 +133,7 @@ namespace ToolFacebookAdb
                     }
                     if (!isHave)
                     {
-                        LDPlayer.Copy($"{itemLv.Text}","82");
+                        LDPlayer.Copy($"{itemLv.Text}", "82");
                         Thread.Sleep(2000);
                         UtilityHelper.SetSharedFolder(itemLv.Text, itemLv.SubItems[3].Text, listLDCurrent);
                     }
@@ -199,6 +199,11 @@ namespace ToolFacebookAdb
 
 
         private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
 
         }

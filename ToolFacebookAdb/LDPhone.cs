@@ -537,7 +537,26 @@ namespace ToolFacebookAdb
             LDPlayer.TapByPercent(LDType.Name, index, 13.2, 27.0);
             Thread.Sleep(2000);
             LDPlayer.TapByPercent(LDType.Name, index, 16.4, 43.9); //click video
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
+
+            Random random = new Random(indexSheet);
+            int swipe = random.Next(3, 10);
+            for(int i = 0;i< swipe; i++)
+            {
+                LDPlayer.SwipeByPercent(LDType.Name, index, 41.6, 75, 41.6, 5);
+            }
+            double minValueX = 5.3; // Giá trị tối thiểu
+            double maxValueX = 91.8; // Giá trị tối đa
+
+            double rangeX = maxValueX - minValueX;
+            double randomNumberInRangeX = random.NextDouble() * rangeX + minValueX;
+
+            double minValueY = 11.6; // Giá trị tối thiểu
+            double maxValueY = 95; // Giá trị tối đa
+            double rangeY = maxValueY - minValueY;
+            double randomNumberInRangeY = random.NextDouble() * rangeY + minValueY;
+            LDPlayer.TapByPercent(LDType.Name, index, randomNumberInRangeX, randomNumberInRangeY);
+            Thread.Sleep(10000);
             //chon ngau nhien video
             LDPlayer.TapByPercent(LDType.Name, index, 18.8, 46.0);
             Thread.Sleep(2000);
