@@ -27,6 +27,7 @@ namespace ToolFacebookAdb
         private void button1_Click(object sender, EventArgs e)
         {
             listConfigRun = new List<ListConfigDataInfo>();
+            listLDCurrent = LDPlayer.GetDevices2();
             foreach (ListViewItem itemLv in mainListView.Items)
             {
                 if (itemLv.Checked)
@@ -98,7 +99,6 @@ namespace ToolFacebookAdb
                         }
                     });
                     newThread.Start();
-                    newThread.IsBackground = false;
                     newThread.IsBackground = true;
 
 
