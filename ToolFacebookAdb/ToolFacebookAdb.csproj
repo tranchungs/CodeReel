@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.Sheets.v4" Version="1.68.0.3407" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Emgu.CV">
+      <HintPath>bin\x86\Debug\net6.0-windows\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="KAutoHelper">
+      <HintPath>C:\Users\tranc\Downloads\getvoucher1\getvoucher\regacc\Regacc\bin\Debug\KAutoHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="xNet">
+      <HintPath>bin\x86\Debug\net6.0-windows\xNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
