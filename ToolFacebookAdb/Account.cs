@@ -47,6 +47,7 @@ namespace ToolFacebookAdb
     {
         public static string FolderConfig;
         public static string FolderLD;
+        public static string LDMain;
 
     }
 }

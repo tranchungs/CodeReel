@@ -35,7 +35,24 @@ namespace ToolFacebookAdb
                 Console.WriteLine("Error occurred: " + ex.Message);
             }
         }
+        public static string ReadLDClone()
+        {
+            string filePath = "Environment.config";
+            try
+            {
+                // Đọc file JSON
+                string jsonContent = File.ReadAllText(filePath);
+                JObject jsonObject = JObject.Parse(jsonContent);
 
+                // Cập nhật thuộc tính
+                string main = jsonObject["LDMain"].ToString();
+                return main;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
         public static List<Account> LoadAccountsFromFile(string path)
         {
             List<Account> accounts = new List<Account>();

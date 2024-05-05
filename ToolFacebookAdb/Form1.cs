@@ -47,7 +47,7 @@ namespace ToolFacebookAdb
 
                     Thread newThread = new Thread(() =>
                     {
-                        while(true)
+                        while (true)
                         {
                             int newThreadNumber;
                             lock (locker)
@@ -109,6 +109,7 @@ namespace ToolFacebookAdb
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string Ldmain = UtilityHelper.ReadLDClone();
             foreach (ListViewItem itemLv in mainListView.Items)
             {
                 if (itemLv.Checked)
@@ -125,7 +126,7 @@ namespace ToolFacebookAdb
                     }
                     if (!isHave)
                     {
-                        LDPlayer.Copy($"{itemLv.Text}", "0");
+                        LDPlayer.Copy($"{itemLv.Text}",$"{Ldmain}");
                     }
 
                 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\ToolFacebookAdb\\ToolFacebookAdb\\ToolFacebookAdb.csproj": {}
+    "D:\\C#\\CodeReel\\ToolFacebookAdb\\ToolFacebookAdb.csproj": {}
   },
   "projects": {
-    "D:\\C#\\ToolFacebookAdb\\ToolFacebookAdb\\ToolFacebookAdb.csproj": {
+    "D:\\C#\\CodeReel\\ToolFacebookAdb\\ToolFacebookAdb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\ToolFacebookAdb\\ToolFacebookAdb\\ToolFacebookAdb.csproj",
+        "projectUniqueName": "D:\\C#\\CodeReel\\ToolFacebookAdb\\ToolFacebookAdb.csproj",
         "projectName": "ToolFacebookAdb",
-        "projectPath": "D:\\C#\\ToolFacebookAdb\\ToolFacebookAdb\\ToolFacebookAdb.csproj",
+        "projectPath": "D:\\C#\\CodeReel\\ToolFacebookAdb\\ToolFacebookAdb.csproj",
         "packagesPath": "C:\\Users\\tranc\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\ToolFacebookAdb\\ToolFacebookAdb\\obj\\",
+        "outputPath": "D:\\C#\\CodeReel\\ToolFacebookAdb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tranc\\AppData\\Roaming\\NuGet\\NuGet.Config",
