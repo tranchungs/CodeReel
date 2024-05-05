@@ -540,10 +540,10 @@ namespace ToolFacebookAdb
             Thread.Sleep(10000);
 
             Random random = new Random(indexSheet);
-            int swipe = random.Next(3, 10);
+            int swipe = random.Next(3, 12);
             for(int i = 0;i< swipe; i++)
             {
-                LDPlayer.SwipeByPercent(LDType.Name, index, 41.6, 75, 41.6, 5);
+                LDPlayer.SwipeByPercent(LDType.Name, index, 41.6, 75, 41.6, 200);
             }
             double minValueX = 5.3; // Giá trị tối thiểu
             double maxValueX = 91.8; // Giá trị tối đa
@@ -564,6 +564,7 @@ namespace ToolFacebookAdb
             Thread.Sleep(2000);
             LDPlayer.TapByPercent(LDType.Name, index, 54.6, 95.1);
             //qua xem reels
+            Thread.Sleep(10000);
 
         }
         public void AnothorAdb()

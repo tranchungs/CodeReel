@@ -79,15 +79,16 @@ namespace ToolFacebookAdb
                                     listConfigRun[newThreadNumber].ldphone.Createpage(listConfigRun[newThreadNumber].Page, listConfigRun[newThreadNumber].account);
                                     Thread.Sleep(1000);
                                 }
-                                if (f_Reels)
-                                {
-                                    listConfigRun[newThreadNumber].ldphone.Reels(30000);
-                                }
                                 if (f_UpReels)
                                 {
                                     listConfigRun[newThreadNumber].ldphone.UpReels(1);
                                     Thread.Sleep(2000);
                                 }
+                                if (f_Reels)
+                                {
+                                    listConfigRun[newThreadNumber].ldphone.Reels(30000);
+                                }
+                                
 
                                 listConfigRun[newThreadNumber].ldphone.Close();
                             }
