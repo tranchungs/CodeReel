@@ -125,7 +125,7 @@ namespace ToolFacebookAdb
                     }
                     if (!isHave)
                     {
-                        LDPlayer.Copy($"{itemLv.Text}",$"82");
+                        LDPlayer.Copy($"{itemLv.Text}","82");
                     }
 
                 }
