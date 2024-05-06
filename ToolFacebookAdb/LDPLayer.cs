@@ -341,18 +341,9 @@ namespace ToolFacebookAdb
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true
                 };
-                while (retry >= 0)
-                {
-                    retry--;
-                    process.Start();
-                    if (process.WaitForExit(timeout))
-                    {
-                        break;
-                    }
-
-                    process.Kill();
-                }
-
+                process.Start();
+                process.WaitForExit(timeout);
+                process.Kill();
                 return process.StandardOutput.ReadToEnd();
             }
             catch

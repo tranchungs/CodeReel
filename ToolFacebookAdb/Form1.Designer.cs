@@ -42,6 +42,7 @@
             columnHeader5 = new ColumnHeader();
             txtThread = new TextBox();
             label5 = new Label();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -165,11 +166,22 @@
             label5.TabIndex = 27;
             label5.Text = "Thread";
             // 
+            // button3
+            // 
+            button3.Location = new Point(420, 391);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 28;
+            button3.Text = "Test";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1171, 436);
+            Controls.Add(button3);
             Controls.Add(label5);
             Controls.Add(txtThread);
             Controls.Add(mainListView);
@@ -203,5 +215,6 @@
         private ColumnHeader columnHeader5;
         private TextBox txtThread;
         private Label label5;
+        private Button button3;
     }
 }

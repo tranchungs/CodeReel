@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Windows.Forms;
 
 
@@ -88,7 +89,7 @@ namespace ToolFacebookAdb
                                 {
                                     listConfigRun[newThreadNumber].ldphone.Reels(30000);
                                 }
-                                
+
 
                                 listConfigRun[newThreadNumber].ldphone.Close();
                             }
@@ -197,15 +198,75 @@ namespace ToolFacebookAdb
 
         }
 
-
-
-        private void button5_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
+            listConfigRun = new List<ListConfigDataInfo>();
+            listLDCurrent = LDPlayer.GetDevices2();
+            foreach (ListViewItem itemLv in mainListView.Items)
+            {
+                if (itemLv.Checked)
+                {
+                    ListConfigDataInfo cfData = UtilityHelper.GetConfigDataInfo(itemLv.Text, listConfigDataInfo);
+                    listConfigRun.Add(cfData);
+                }
+            }
+            bool f_TaoPage = cbRegPage.Checked;
+            bool f_Reels = cbXemReels.Checked;
+            bool f_UpReels = cbDangReel.Checked;
+            int countAcc = 0;
+            if (Int32.TryParse(txtThread.Text, out int threadCount))
+            {
+                List<Thread> threads = new List<Thread>();
+                for (int i = 0; i < threadCount; i++)
+                {
 
+                    Thread newThread = new Thread(() =>
+                    {
+                        while (true)
+                        {
+                            try
+                            {
+
+
+                                int newThreadNumber;
+                                lock (locker)
+                                {
+                                    newThreadNumber = countAcc;
+                                    if (countAcc >= listConfigRun.Count) return;
+                                    countAcc++;
+                                }
+
+                                //  UtilityHelper.SetSharedFolder(listConfigRun[newThreadNumber].ldphone.index, listConfigRun[newThreadNumber].Folder, listLDCurrent);
+
+                                listConfigRun[newThreadNumber].ldphone.Createpage(listConfigRun[newThreadNumber].Page, listConfigRun[newThreadNumber].account);
+                                //  listConfigRun[newThreadNumber].ldphone.UpReels(1);
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+
+                        }
+                    });
+                    newThread.Start();
+                    newThread.IsBackground = true;
+
+
+                }
+                foreach (var thread in threads)
+                {
+                    thread.Join();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nhap so luong");
+            }
         }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void button5_Click_1(object sender, EventArgs e)
         {
+            LDPlayer.TapByPercent(LDType.Name, "LDPlayer-4", 16.4, 43.7);
 
         }
     }

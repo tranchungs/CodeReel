@@ -199,20 +199,26 @@ namespace ToolFacebookAdb
                             listOpenSceen.Add(context.iconThuLai);
                             listOpenSceen.Add(context.iconLucKhac);
                             listOpenSceen.Add(context.iconLucKhac2);
-                            InfoImage Screen_ResultAfterLogin = CheckListBitMap(listOpenSceen);
+                            InfoImage Screen_ResultAfterLogin = CheckListBitMap(listOpenSceen); // tai sao lai ko click zo 
                             if (Screen_ResultAfterLogin.isHave)
                             {
-                                LDPlayer.Tap(LDType.Name, index, ScreenAppLogin.point.X, ScreenAppLogin.point.Y);
+                                LDPlayer.TapImg(LDType.Name, index, Screen_ResultAfterLogin.bitmap);
+                            }
+                            Thread.Sleep(1000);
+                            InfoImage Screen_ResultAfterLogin2 = CheckListBitMap(listOpenSceen); // tai sao lai ko click zo 
+                            if (Screen_ResultAfterLogin2.isHave)
+                            {
+                                LDPlayer.TapImg(LDType.Name, index, Screen_ResultAfterLogin.bitmap);
                             }
                             Thread.Sleep(5000);
                             LDPlayer.KillApp(LDType.Name, index, FACEBOOK);
                             Thread.Sleep(1000);
                             LDPlayer.OpenApp(LDType.Name, index, FACEBOOK);
-                            Thread.Sleep(5000);
+                            Thread.Sleep(10000);
                             if (IshaveImg(context.iconChoPhep))
                             {
                                 LDPlayer.TapImg(LDType.Name, index, context.iconChoPhep);
-                                Thread.Sleep(1000);
+                                Thread.Sleep(2000);
                                 if (IshaveImg(context.iconChoPhep2))
                                 {
                                     LDPlayer.TapImg(LDType.Name, index, context.iconChoPhep2);
@@ -237,7 +243,7 @@ namespace ToolFacebookAdb
                 LDPlayer.KillApp(LDType.Name, index, FACEBOOK);
                 Thread.Sleep(1000);
                 LDPlayer.OpenApp(LDType.Name, index, FACEBOOK);
-                Thread.Sleep(5000);
+                Thread.Sleep(10000);
                 goto CheckLai;
 
             }
@@ -344,6 +350,7 @@ namespace ToolFacebookAdb
                         infoImage.isHave = true;
                         infoImage.point = (Point)Point;
                         infoImage.index = i;
+                        infoImage.bitmap = bm;
                         break;
                     }
                 }
@@ -511,6 +518,7 @@ namespace ToolFacebookAdb
         {
           LDPlayer.Adb(LDType.Name, index, " shell am start -n com.facebook.katana/com.facebook.katana.IntentUriHandler -d \"https://www.facebook.com/reel/1102071784422020\"");
             Thread.Sleep(5000);
+
             // watch reel
             int currentReel = 0;
             while (currentReel < timewatch)
@@ -534,9 +542,17 @@ namespace ToolFacebookAdb
         {
             LDPlayer.Adb(LDType.Name, index, " shell am start -n com.facebook.katana/com.facebook.katana.IntentUriHandler -d \"https://www.facebook.com/reelscomposer\"");
             Thread.Sleep(5000);
+            if (IshaveImg(context.iconChoPhepTruyCap))
+            {
+                LDPlayer.TapImg(LDType.Name, index, context.iconChoPhepTruyCap);
+                Thread.Sleep(400);
+                LDPlayer.TapByPercent(LDType.Name, index, 75.5, 63.8);
+                Thread.Sleep(400);
+                LDPlayer.TapByPercent(LDType.Name, index, 72.6, 61.0);
+            }
             LDPlayer.TapByPercent(LDType.Name, index, 13.2, 27.0);
             Thread.Sleep(2000);
-            LDPlayer.TapByPercent(LDType.Name, index, 16.4, 43.9); //click video
+            LDPlayer.TapByPercent(LDType.Name, index, 16.4, 43.9,0); //click video
             Thread.Sleep(10000);
 
             Random random = new Random(indexSheet);
@@ -583,11 +599,13 @@ public class InfoImage
     public int index;
     public bool isHave;
     public Point point;
-    public InfoImage(int index,bool ishave,Point point)
+    public Bitmap bitmap;
+    public InfoImage(int index,bool ishave,Point point, Bitmap bitmap)
     {
         this.index = index;
         this.isHave = ishave;
         this.point = point;
+        this.bitmap = bitmap;
     }
     public InfoImage(bool ishave)
     {
